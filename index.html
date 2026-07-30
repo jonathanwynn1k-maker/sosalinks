@@ -1251,6 +1251,7 @@
     margin-bottom: 8px;
   }
   .form-row input,
+  .form-row select,
   .form-row textarea {
     width: 100%;
     background: var(--dark);
@@ -1263,7 +1264,9 @@
     transition: border-color 0.3s;
   }
   .form-row input:focus,
+  .form-row select:focus,
   .form-row textarea:focus { border-color: rgba(255,215,0,0.6); }
+  .form-row select { cursor: pointer; }
   .form-row textarea { resize: vertical; min-height: 100px; }
   .form-two-col {
     display: grid;
@@ -2385,9 +2388,51 @@
           <input type="email" name="email" required>
         </div>
       </div>
+      <div class="form-two-col">
+        <div class="form-row">
+          <label>Chain Width (MM)</label>
+          <select name="chainWidth" required>
+            <option value="">Select width</option>
+            <option value="10MM">10MM</option>
+            <option value="14MM">14MM</option>
+            <option value="16MM">16MM</option>
+            <option value="18MM">18MM</option>
+            <option value="20MM">20MM</option>
+            <option value="22MM">22MM</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Chain Length</label>
+          <select name="chainLength" required>
+            <option value="">Select length</option>
+            <option value="12in">12"</option>
+            <option value="13in">13"</option>
+            <option value="14in">14"</option>
+            <option value="15in">15"</option>
+            <option value="16in">16"</option>
+            <option value="17in">17"</option>
+            <option value="18in">18"</option>
+            <option value="19in">19"</option>
+            <option value="20in">20"</option>
+            <option value="21in">21"</option>
+            <option value="22in">22"</option>
+            <option value="23in">23"</option>
+            <option value="24in">24"</option>
+            <option value="25in">25"</option>
+          </select>
+        </div>
+      </div>
       <div class="form-row">
-        <label>What Do You Want?</label>
-        <textarea name="comments" required placeholder="Width, length, color/metal, and anything else we should know..."></textarea>
+        <label>Bracelet Size</label>
+        <select name="braceletSize" required>
+          <option value="">Select size</option>
+          <option value="7in">7 Inch</option>
+          <option value="8in">8 Inch</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>What Would You Like?</label>
+        <textarea name="comments" placeholder="Metal color, finish, engraving, or anything else we should know..."></textarea>
       </div>
       <button type="submit" class="form-submit-btn">Send Custom Request</button>
       <div class="form-success" id="customFormSuccess">Thanks! Your email app should have opened with your request pre-filled — just hit send and we'll follow up.</div>
@@ -2637,7 +2682,7 @@
     e.preventDefault();
     const f = e.target;
     const subject = encodeURIComponent('Custom Order Request - ' + f.name.value);
-    const body = encodeURIComponent(`Name: ${f.name.value}\nDate of Birth: ${f.dob.value}\nPhone: ${f.phone.value}\nEmail: ${f.email.value}\n\nRequest:\n${f.comments.value}`);
+    const body = encodeURIComponent(`Name: ${f.name.value}\nDate of Birth: ${f.dob.value}\nPhone: ${f.phone.value}\nEmail: ${f.email.value}\n\nChain Width: ${f.chainWidth.value}\nChain Length: ${f.chainLength.value}\nBracelet Size: ${f.braceletSize.value}\n\nAdditional Notes:\n${f.comments.value}`);
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     document.getElementById('customFormSuccess').classList.add('show');
     f.reset();
