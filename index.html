@@ -13,11 +13,12 @@
     --black: #080808;
     --dark: #111111;
     --card: #151515;
-    --gold: #FFD700;
-    --gold-dark: #B8860B;
-    --gold-mid: #D4A017;
-    --gold-light: #FFE566;
-    --gold-deep: #8B6914;
+    --gold: #E8A838;
+    --gold-dark: #A8650E;
+    --gold-mid: #D98F26;
+    --gold-light: #F5C860;
+    --gold-deep: #7A4310;
+    --gold-spark: #FFF3D6;
     --cream: #F5E6C8;
     --white: #FFFFFF;
     --text-muted: #888888;
@@ -78,7 +79,7 @@
   }
   nav.scrolled {
     background: rgba(8,8,8,0.97);
-    border-bottom: 1px solid rgba(255,215,0,0.2);
+    border-bottom: 1px solid rgba(232,168,56,0.2);
     backdrop-filter: blur(20px);
   }
   .nav-logo {
@@ -91,14 +92,14 @@
   .nav-logo img {
     height: 46px;
     width: auto;
-    filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
+    filter: drop-shadow(0 0 8px rgba(232,168,56,0.6));
   }
   .nav-brand {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.4rem;
     letter-spacing: 0.15em;
     color: var(--gold);
-    text-shadow: 0 0 20px rgba(255,215,0,0.4);
+    text-shadow: 0 0 20px rgba(232,168,56,0.4);
   }
   /* Home tooltip on the logo mark */
   .nav-logo::after {
@@ -106,7 +107,7 @@
     position: absolute;
     top: 56px; left: 0;
     background: var(--card);
-    border: 1px solid rgba(255,215,0,0.3);
+    border: 1px solid rgba(232,168,56,0.3);
     color: var(--gold);
     font-family: 'Montserrat', sans-serif;
     font-size: 0.55rem;
@@ -164,9 +165,61 @@
   }
   .nav-cta:hover {
     background: var(--gold-light) !important;
-    box-shadow: 0 0 20px rgba(255,215,0,0.5);
+    box-shadow: 0 0 20px rgba(232,168,56,0.5);
   }
   .nav-cta::after { display: none !important; }
+
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-menu {
+    position: absolute;
+    top: 100%; left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: var(--card);
+    border: 1px solid rgba(232,168,56,0.25);
+    padding: 14px 0;
+    min-width: 190px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    z-index: 1001;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1; pointer-events: all;
+    transform: translateX(-50%) translateY(0);
+  }
+  .nav-dropdown-menu a, .nav-dropdown-heading {
+    display: block;
+    padding: 8px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-dropdown-menu a { color: rgba(255,255,255,0.7); transition: color 0.2s, background 0.2s; cursor: pointer; }
+  .nav-dropdown-menu a:hover { color: var(--gold); background: rgba(232,168,56,0.08); }
+  .nav-dropdown-heading { color: var(--gold); font-weight: 700; padding-bottom: 4px; opacity: 0.85; }
+  .nav-dropdown-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 6px 0; }
+
+  .nav-icon-btn {
+    position: relative;
+    background: none; border: none; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 4px 6px;
+  }
+  .nav-icon-btn svg { width: 22px; height: 22px; }
+  .nav-icon-label {
+    font-family: 'Montserrat', sans-serif; font-size: 0.5rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6);
+  }
+  .nav-icon-btn:hover .nav-icon-label { color: var(--gold); }
+  .nav-icon-count {
+    position: absolute; top: -4px; right: 0;
+    background: var(--gold); color: var(--black); border-radius: 50%;
+    width: 15px; height: 15px; font-size: 0.55rem; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+  }
 
   .nav-right {
     display: flex;
@@ -253,7 +306,7 @@
     position: absolute;
     left: 0; right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.08), transparent);
+    background: linear-gradient(90deg, transparent, rgba(232,168,56,0.08), transparent);
     animation: speed-sweep 6s ease-in-out infinite;
   }
   @keyframes speed-sweep {
@@ -294,13 +347,13 @@
     height: 120px;
     object-fit: contain;
     margin-bottom: 20px;
-    filter: drop-shadow(0 0 30px rgba(255,215,0,0.8)) drop-shadow(0 0 60px rgba(255,215,0,0.4));
+    filter: drop-shadow(0 0 30px rgba(232,168,56,0.8)) drop-shadow(0 0 60px rgba(232,168,56,0.4));
     opacity: 0;
     animation: fade-up 0.8s ease 0.4s forwards, logo-pulse 3s ease 1.2s infinite;
   }
   @keyframes logo-pulse {
-    0%, 100% { filter: drop-shadow(0 0 30px rgba(255,215,0,0.8)) drop-shadow(0 0 60px rgba(255,215,0,0.4)); }
-    50% { filter: drop-shadow(0 0 50px rgba(255,215,0,1)) drop-shadow(0 0 100px rgba(255,215,0,0.6)); }
+    0%, 100% { filter: drop-shadow(0 0 30px rgba(232,168,56,0.8)) drop-shadow(0 0 60px rgba(232,168,56,0.4)); }
+    50% { filter: drop-shadow(0 0 50px rgba(232,168,56,1)) drop-shadow(0 0 100px rgba(232,168,56,0.6)); }
   }
 
   .hero-title {
@@ -310,23 +363,23 @@
     letter-spacing: 0.02em;
     color: var(--gold);
     text-shadow:
-      0 0 40px rgba(255,215,0,0.8),
-      0 0 80px rgba(255,215,0,0.4),
-      0 0 160px rgba(255,215,0,0.2);
+      0 0 40px rgba(232,168,56,0.8),
+      0 0 80px rgba(232,168,56,0.4),
+      0 0 160px rgba(232,168,56,0.2);
     animation: neon-flicker 0.8s ease 0.6s forwards, neon-breathe 4s ease 1.4s infinite;
     opacity: 0;
   }
   @keyframes neon-flicker {
     0% { opacity: 0; }
-    60% { opacity: 1; text-shadow: 0 0 80px rgba(255,215,0,1), 0 0 160px rgba(255,215,0,0.8); }
+    60% { opacity: 1; text-shadow: 0 0 80px rgba(232,168,56,1), 0 0 160px rgba(232,168,56,0.8); }
     75% { opacity: 0.7; }
     85% { opacity: 1; }
     95% { opacity: 0.8; }
-    100% { opacity: 1; text-shadow: 0 0 40px rgba(255,215,0,0.8), 0 0 80px rgba(255,215,0,0.4); }
+    100% { opacity: 1; text-shadow: 0 0 40px rgba(232,168,56,0.8), 0 0 80px rgba(232,168,56,0.4); }
   }
   @keyframes neon-breathe {
-    0%, 100% { text-shadow: 0 0 40px rgba(255,215,0,0.8), 0 0 80px rgba(255,215,0,0.4), 0 0 160px rgba(255,215,0,0.2); }
-    50% { text-shadow: 0 0 60px rgba(255,215,0,1), 0 0 120px rgba(255,215,0,0.6), 0 0 240px rgba(255,215,0,0.3); }
+    0%, 100% { text-shadow: 0 0 40px rgba(232,168,56,0.8), 0 0 80px rgba(232,168,56,0.4), 0 0 160px rgba(232,168,56,0.2); }
+    50% { text-shadow: 0 0 60px rgba(232,168,56,1), 0 0 120px rgba(232,168,56,0.6), 0 0 240px rgba(232,168,56,0.3); }
   }
 
   .hero-sub {
@@ -335,7 +388,7 @@
     font-style: italic;
     font-weight: 300;
     letter-spacing: 0.3em;
-    color: rgba(255,215,0,0.7);
+    color: rgba(232,168,56,0.7);
     margin-top: 8px;
     opacity: 0;
     animation: fade-up 0.8s ease 1s forwards;
@@ -385,7 +438,7 @@
     animation: fade-up 0.8s ease 1.5s forwards;
   }
   .hero-badge {
-    border: 1px solid rgba(255,215,0,0.3);
+    border: 1px solid rgba(232,168,56,0.3);
     padding: 8px 18px;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.6rem;
@@ -401,7 +454,7 @@
     position: absolute;
     top: 0; left: -100%;
     width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(232,168,56,0.1), transparent);
     animation: shimmer-badge 3s ease infinite;
   }
   @keyframes shimmer-badge {
@@ -415,7 +468,7 @@
     margin-top: 28px;
     padding: 12px 28px;
     border: 1px solid var(--gold);
-    background: rgba(255,215,0,0.08);
+    background: rgba(232,168,56,0.08);
     color: var(--gold);
     font-family: 'Montserrat', sans-serif;
     font-size: 0.7rem;
@@ -430,8 +483,8 @@
     animation: fade-up 0.8s ease 1.7s forwards, drop-pulse 2.5s ease 2.5s infinite;
   }
   @keyframes drop-pulse {
-    0%, 100% { box-shadow: 0 0 0 rgba(255,215,0,0); }
-    50% { box-shadow: 0 0 24px rgba(255,215,0,0.5); }
+    0%, 100% { box-shadow: 0 0 0 rgba(232,168,56,0); }
+    50% { box-shadow: 0 0 24px rgba(232,168,56,0.5); }
   }
 
   .hero-scroll {
@@ -453,7 +506,7 @@
   .hero-scroll span {
     font-size: 0.55rem;
     letter-spacing: 0.3em;
-    color: rgba(255,215,0,0.4);
+    color: rgba(232,168,56,0.4);
     text-transform: uppercase;
   }
   .scroll-arrow {
@@ -489,7 +542,7 @@
   .deco-line {
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(232,168,56,0.3), transparent);
   }
   .deco-ornament {
     display: flex;
@@ -554,8 +607,8 @@
     top: 0; left: 0; right: 0;
     height: 220px;
     background:
-      radial-gradient(ellipse 60px 90px at 8% 40%, rgba(255,215,0,0.05), transparent 70%),
-      radial-gradient(ellipse 50px 80px at 93% 30%, rgba(255,215,0,0.05), transparent 70%);
+      radial-gradient(ellipse 60px 90px at 8% 40%, rgba(232,168,56,0.05), transparent 70%),
+      radial-gradient(ellipse 50px 80px at 93% 30%, rgba(232,168,56,0.05), transparent 70%);
     pointer-events: none;
   }
 
@@ -611,7 +664,7 @@
   }
   .filter-tab {
     background: none;
-    border: 1px solid rgba(255,215,0,0.25);
+    border: 1px solid rgba(232,168,56,0.25);
     color: rgba(255,255,255,0.6);
     padding: 10px 22px;
     font-family: 'Montserrat', sans-serif;
@@ -642,7 +695,7 @@
   /* ─── PRODUCT CARD ─── */
   .product-card {
     background: var(--card);
-    border: 1px solid rgba(255,215,0,0.1);
+    border: 1px solid rgba(232,168,56,0.1);
     padding: 32px;
     position: relative;
     overflow: hidden;
@@ -662,14 +715,14 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.05) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(232,168,56,0.05) 0%, transparent 70%);
     opacity: 0;
     transition: opacity 0.4s;
   }
   .product-card:hover {
-    border-color: rgba(255,215,0,0.35);
+    border-color: rgba(232,168,56,0.35);
     transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255,215,0,0.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(232,168,56,0.08);
   }
   .product-card:hover::before { opacity: 1; }
   .product-card:hover::after { opacity: 1; }
@@ -680,7 +733,7 @@
     position: absolute;
     top: -50%; left: -50%;
     width: 30%; height: 200%;
-    background: linear-gradient(105deg, transparent, rgba(255,215,0,0.06), transparent);
+    background: linear-gradient(105deg, transparent, rgba(232,168,56,0.06), transparent);
     transform: skewX(-20deg);
     transition: left 0.6s ease;
     pointer-events: none;
@@ -693,32 +746,29 @@
     position: absolute;
     top: 12px; right: 12px;
     width: 16px; height: 16px;
-    border-top: 1px solid rgba(255,215,0,0.3);
-    border-right: 1px solid rgba(255,215,0,0.3);
+    border-top: 1px solid rgba(232,168,56,0.3);
+    border-right: 1px solid rgba(232,168,56,0.3);
   }
   .card-corner-bl {
     position: absolute;
     bottom: 12px; left: 12px;
     width: 16px; height: 16px;
-    border-bottom: 1px solid rgba(255,215,0,0.3);
-    border-left: 1px solid rgba(255,215,0,0.3);
+    border-bottom: 1px solid rgba(232,168,56,0.3);
+    border-left: 1px solid rgba(232,168,56,0.3);
   }
 
   .card-chain-visual {
     width: 100%;
-    height: 6px;
-    background: repeating-linear-gradient(
-      90deg,
-      var(--gold-deep) 0px,
-      var(--gold-mid) 4px,
-      var(--gold) 6px,
-      var(--gold-light) 7px,
-      var(--gold-mid) 8px,
-      var(--gold-deep) 12px
-    );
-    border-radius: 3px;
+    height: 16px;
+    background-image: radial-gradient(ellipse 6px 6px at 8px 8px,
+      var(--gold-spark) 0%, var(--gold-light) 20%, var(--gold) 45%,
+      var(--gold-mid) 65%, var(--gold-dark) 85%, var(--gold-deep) 100%);
+    background-size: 16px 16px;
+    background-repeat: repeat-x;
+    background-position: center;
+    border-radius: 8px;
     margin-bottom: 24px;
-    box-shadow: 0 0 8px rgba(255,215,0,0.4), 0 2px 4px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.2);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.3);
     position: relative;
     z-index: 1;
   }
@@ -775,9 +825,9 @@
     border-radius: 1px;
   }
   .badge-gold {
-    background: rgba(255,215,0,0.1);
+    background: rgba(232,168,56,0.1);
     color: var(--gold);
-    border: 1px solid rgba(255,215,0,0.25);
+    border: 1px solid rgba(232,168,56,0.25);
   }
   .badge-rose {
     background: rgba(255,150,150,0.1);
@@ -785,9 +835,9 @@
     border: 1px solid rgba(255,150,150,0.25);
   }
   .badge-exclusive {
-    background: rgba(255,215,0,0.15);
+    background: rgba(232,168,56,0.15);
     color: var(--gold);
-    border: 1px solid rgba(255,215,0,0.4);
+    border: 1px solid rgba(232,168,56,0.4);
   }
   .badge-special {
     background: rgba(100,200,255,0.1);
@@ -845,7 +895,7 @@
     margin-top: 20px;
     padding: 12px;
     background: transparent;
-    border: 1px solid rgba(255,215,0,0.3);
+    border: 1px solid rgba(232,168,56,0.3);
     color: var(--gold);
     font-family: 'Montserrat', sans-serif;
     font-size: 0.6rem;
@@ -881,17 +931,18 @@
   /* Signature tier card variant */
   .card-signature {
     background: linear-gradient(135deg, #151515 0%, #1A1608 100%);
-    border-color: rgba(255,215,0,0.2);
+    border-color: rgba(232,168,56,0.2);
   }
 
   /* Exclusive tier card variant */
   .card-exclusive {
     background: linear-gradient(135deg, #1A1400 0%, #151500 50%, #0D0D00 100%);
-    border-color: rgba(255,215,0,0.25);
+    border-color: rgba(232,168,56,0.25);
   }
   .card-exclusive .card-chain-visual {
-    height: 8px;
-    box-shadow: 0 0 15px rgba(255,215,0,0.6), 0 2px 6px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.2);
+    height: 18px;
+    background-size: 18px 18px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.35);
   }
 
   /* ─── COMING SOON ─── */
@@ -907,8 +958,8 @@
     margin-top: 32px;
   }
   .coming-soon-card {
-    background: rgba(255,215,0,0.03);
-    border: 1px dashed rgba(255,215,0,0.2);
+    background: rgba(232,168,56,0.03);
+    border: 1px dashed rgba(232,168,56,0.2);
     padding: 28px;
     text-align: center;
     position: relative;
@@ -919,7 +970,7 @@
     font-size: 0.55rem;
     font-weight: 700;
     letter-spacing: 0.3em;
-    color: rgba(255,215,0,0.5);
+    color: rgba(232,168,56,0.5);
     text-transform: uppercase;
     margin-bottom: 8px;
   }
@@ -932,7 +983,7 @@
   .cs-shimmer {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.04), transparent);
+    background: linear-gradient(90deg, transparent, rgba(232,168,56,0.04), transparent);
     animation: cs-sweep 3s ease infinite;
   }
   @keyframes cs-sweep {
@@ -966,7 +1017,7 @@
   }
   .size-compare-track {
     background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,215,0,0.1);
+    border: 1px solid rgba(232,168,56,0.1);
     padding: 10px 16px;
     display: flex;
     align-items: center;
@@ -993,7 +1044,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent, rgba(255,215,0,0.02), transparent);
+    background: linear-gradient(180deg, transparent, rgba(232,168,56,0.02), transparent);
     pointer-events: none;
   }
   .why-grid {
@@ -1006,7 +1057,7 @@
   .why-card {
     text-align: center;
     padding: 40px 20px;
-    border-top: 1px solid rgba(255,215,0,0.15);
+    border-top: 1px solid rgba(232,168,56,0.15);
     position: relative;
   }
   .why-card::before {
@@ -1054,10 +1105,15 @@
     min-width: 180px;
     text-align: center;
     padding: 28px 20px;
-    border-left: 1px solid rgba(255,215,0,0.1);
+    border-left: 1px solid rgba(232,168,56,0.1);
   }
   .trust-item:first-child { border-left: none; }
-  .trust-icon { font-size: 1.4rem; display: block; margin-bottom: 10px; }
+  .trust-icon-svg { width: 26px; height: 26px; display: block; margin: 0 auto 10px; }
+  .trust-lead {
+    max-width: 640px; margin: 0 auto 8px; padding: 0 20px;
+    font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem;
+    color: rgba(232,168,56,0.85); text-align: center; line-height: 1.5;
+  }
   .trust-label {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.6rem;
@@ -1083,14 +1139,14 @@
     top: 0; left: 50%;
     transform: translateX(-50%);
     width: 600px; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(232,168,56,0.3), transparent);
   }
   .bracelet-note {
     max-width: 700px;
     margin: 0 auto;
     text-align: center;
-    background: rgba(255,215,0,0.04);
-    border: 1px solid rgba(255,215,0,0.15);
+    background: rgba(232,168,56,0.04);
+    border: 1px solid rgba(232,168,56,0.15);
     padding: 40px;
     position: relative;
   }
@@ -1123,7 +1179,7 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.4rem;
     color: var(--gold);
-    border: 1px solid rgba(255,215,0,0.3);
+    border: 1px solid rgba(232,168,56,0.3);
     padding: 10px 28px;
     letter-spacing: 0.1em;
   }
@@ -1154,13 +1210,13 @@
     max-width: 720px;
     margin: 0 auto 40px;
     padding: 14px 24px;
-    border: 1px dashed rgba(255,215,0,0.3);
-    background: rgba(255,215,0,0.04);
+    border: 1px dashed rgba(232,168,56,0.3);
+    background: rgba(232,168,56,0.04);
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.65rem;
     letter-spacing: 0.05em;
-    color: rgba(255,215,0,0.7);
+    color: rgba(232,168,56,0.7);
   }
   .social-row {
     display: flex;
@@ -1169,7 +1225,7 @@
     padding-bottom: 80px;
   }
   .social-pill {
-    border: 1px solid rgba(255,215,0,0.3);
+    border: 1px solid rgba(232,168,56,0.3);
     color: var(--gold);
     padding: 10px 24px;
     font-family: 'Montserrat', sans-serif;
@@ -1180,7 +1236,7 @@
     text-decoration: none;
     transition: all 0.3s;
   }
-  .social-pill:hover { background: rgba(255,215,0,0.1); }
+  .social-pill:hover { background: rgba(232,168,56,0.1); }
 
   /* ─── REVIEWS PAGE ─── */
   .reviews-grid {
@@ -1193,7 +1249,7 @@
   }
   .review-card {
     background: var(--card);
-    border: 1px solid rgba(255,215,0,0.1);
+    border: 1px solid rgba(232,168,56,0.1);
     padding: 28px;
   }
   .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 3px; margin-bottom: 12px; }
@@ -1210,8 +1266,58 @@
     font-size: 0.6rem;
     font-weight: 700;
     letter-spacing: 0.15em;
-    color: rgba(255,215,0,0.6);
+    color: rgba(232,168,56,0.6);
     text-transform: uppercase;
+  }
+
+  /* ─── REVIEW CAROUSEL ─── */
+  .carousel-wrap { position: relative; max-width: 1100px; margin: 0 auto; padding: 20px 60px 60px; }
+  .carousel-track {
+    display: flex; gap: 28px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 10px 4px 20px; scrollbar-width: none;
+  }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  .carousel-card { scroll-snap-align: center; text-align: center; flex-shrink: 0; }
+  .carousel-frame {
+    position: relative;
+    width: 220px; height: 300px;
+    border-radius: 8px;
+    padding: 10px;
+    background: linear-gradient(145deg, var(--gold-light), var(--gold) 35%, var(--gold-dark) 70%, var(--gold-deep));
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6), inset 0 2px 2px rgba(255,255,255,0.5), inset 0 -3px 4px rgba(0,0,0,0.5);
+  }
+  .carousel-media-placeholder {
+    width: 100%; height: 100%;
+    background: var(--black);
+    border-radius: 4px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; color: rgba(255,255,255,0.3);
+    font-family: 'Montserrat', sans-serif; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .carousel-media-placeholder span { font-size: 1.8rem; color: rgba(232,168,56,0.5); }
+  .carousel-stars {
+    position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+    color: var(--gold-spark); font-size: 0.9rem; letter-spacing: 3px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+  }
+  .carousel-caption {
+    margin-top: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.62rem;
+    letter-spacing: 0.15em; color: rgba(232,168,56,0.7); text-transform: uppercase;
+  }
+  .carousel-arrow {
+    position: absolute; top: 140px; transform: translateY(-50%);
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--card); border: 1px solid rgba(232,168,56,0.3); color: var(--gold);
+    font-size: 1.5rem; line-height: 1; cursor: pointer; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .carousel-arrow:hover { background: rgba(232,168,56,0.12); }
+  .carousel-arrow-left { left: 0; }
+  .carousel-arrow-right { right: 0; }
+  @media (max-width: 600px) {
+    .carousel-wrap { padding: 20px 46px 50px; }
+    .carousel-frame { width: 180px; height: 250px; }
+    .carousel-arrow { width: 36px; height: 36px; font-size: 1.2rem; top: 115px; }
   }
 
   /* ─── FORMS (Custom Order / Write a Review) ─── */
@@ -1220,7 +1326,7 @@
     margin: 60px auto 100px;
     padding: 44px;
     background: var(--card);
-    border: 1px solid rgba(255,215,0,0.15);
+    border: 1px solid rgba(232,168,56,0.15);
     position: relative;
   }
   .form-panel::before {
@@ -1255,7 +1361,7 @@
   .form-row textarea {
     width: 100%;
     background: var(--dark);
-    border: 1px solid rgba(255,215,0,0.2);
+    border: 1px solid rgba(232,168,56,0.2);
     color: var(--white);
     padding: 12px 14px;
     font-family: 'Montserrat', sans-serif;
@@ -1265,7 +1371,7 @@
   }
   .form-row input:focus,
   .form-row select:focus,
-  .form-row textarea:focus { border-color: rgba(255,215,0,0.6); }
+  .form-row textarea:focus { border-color: rgba(232,168,56,0.6); }
   .form-row select { cursor: pointer; }
   .form-row textarea { resize: vertical; min-height: 100px; }
   .form-two-col {
@@ -1303,7 +1409,7 @@
   }
   .form-submit-btn:hover {
     background: var(--gold-light);
-    box-shadow: 0 0 30px rgba(255,215,0,0.4);
+    box-shadow: 0 0 30px rgba(232,168,56,0.4);
   }
   .form-success {
     display: none;
@@ -1324,7 +1430,7 @@
   footer {
     background: #030303;
     padding: 80px 40px 40px;
-    border-top: 1px solid rgba(255,215,0,0.1);
+    border-top: 1px solid rgba(232,168,56,0.1);
     position: relative;
     overflow: hidden;
   }
@@ -1351,7 +1457,7 @@
     height: 60px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(255,215,0,0.4));
+    filter: drop-shadow(0 0 10px rgba(232,168,56,0.4));
     align-self: flex-start;
   }
   .footer-brand-name {
@@ -1411,7 +1517,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 0.85rem;
     font-style: italic;
-    color: rgba(255,215,0,0.3);
+    color: rgba(232,168,56,0.3);
   }
 
   /* ─── CONTACT STRIP ─── */
@@ -1483,7 +1589,7 @@
   }
   .modal-box {
     background: var(--card);
-    border: 1px solid rgba(255,215,0,0.3);
+    border: 1px solid rgba(232,168,56,0.3);
     padding: 48px;
     max-width: 480px;
     width: 90%;
@@ -1546,7 +1652,7 @@
   }
   .modal-select-row select {
     background: var(--dark);
-    border: 1px solid rgba(255,215,0,0.2);
+    border: 1px solid rgba(232,168,56,0.2);
     color: var(--white);
     padding: 10px 14px;
     font-family: 'Montserrat', sans-serif;
@@ -1556,7 +1662,7 @@
     cursor: pointer;
   }
   .modal-select-row select:focus {
-    border-color: rgba(255,215,0,0.5);
+    border-color: rgba(232,168,56,0.5);
   }
   .modal-price {
     font-family: 'Bebas Neue', sans-serif;
@@ -1582,7 +1688,7 @@
   }
   .modal-btn:hover {
     background: var(--gold-light);
-    box-shadow: 0 0 30px rgba(255,215,0,0.4);
+    box-shadow: 0 0 30px rgba(232,168,56,0.4);
   }
   .modal-info {
     font-family: 'Montserrat', sans-serif;
@@ -1598,7 +1704,7 @@
   .cart-btn {
     position: relative;
     background: none;
-    border: 1px solid rgba(255,215,0,0.25);
+    border: 1px solid rgba(232,168,56,0.25);
     color: var(--gold);
     padding: 8px 16px;
     font-family: 'Montserrat', sans-serif;
@@ -1613,7 +1719,7 @@
     gap: 8px;
   }
   .cart-btn:hover {
-    background: rgba(255,215,0,0.1);
+    background: rgba(232,168,56,0.1);
   }
   .cart-count {
     background: var(--gold);
@@ -1646,8 +1752,10 @@
     .modal-box { padding: 32px 24px; }
     .deco-divider { padding: 0 20px; }
     .page-header { padding: 120px 20px 20px; }
-    .trust-item { min-width: 140px; border-left: none; border-top: 1px solid rgba(255,215,0,0.1); }
+    .trust-item { min-width: 140px; border-left: none; border-top: 1px solid rgba(232,168,56,0.1); }
     .trust-item:first-child { border-top: none; }
+    .nav-right { gap: 8px; }
+    .nav-icon-label { display: none; }
     .form-panel { padding: 28px 20px; margin: 40px auto 60px; }
     .form-two-col { grid-template-columns: 1fr; gap: 0; }
     .size-compare-row { grid-template-columns: 55px 1fr 46px; gap: 10px; }
@@ -1692,6 +1800,23 @@
   </div>
 </div>
 
+<!-- ACCOUNT MODAL -->
+<div class="modal-overlay" id="accountModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeAccountModal()">✕</button>
+    <div class="modal-title">Accounts Coming Soon</div>
+    <div class="modal-sub">Get early access + first look at new drops</div>
+    <form onsubmit="submitAccountWaitlist(event)">
+      <div class="form-row">
+        <label>Email</label>
+        <input type="email" name="email" required>
+      </div>
+      <button type="submit" class="form-submit-btn">Notify Me</button>
+    </form>
+    <p class="modal-info">Full accounts + order history are on the way. This just gets you on the early list for now.</p>
+  </div>
+</div>
+
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
@@ -1708,15 +1833,33 @@
     <span class="nav-brand">SL</span>
   </a>
   <ul class="nav-links">
-    <li><a class="nav-link" data-view="shop" onclick="showView('shop');return false;">Shop</a></li>
+    <li class="nav-dropdown">
+      <a class="nav-link" data-view="shop" onclick="showView('shop');return false;">Shop</a>
+      <div class="nav-dropdown-menu">
+        <a onclick="goShop('all');return false;">All Products</a>
+        <div class="nav-dropdown-divider"></div>
+        <span class="nav-dropdown-heading">Bracelets</span>
+        <a onclick="goShop('bracelet');return false;">Gold</a>
+        <a onclick="goShop('bracelet');return false;">Rose Gold</a>
+        <div class="nav-dropdown-divider"></div>
+        <span class="nav-dropdown-heading">Chains</span>
+        <a onclick="goShop('chain');return false;">Gold</a>
+        <a onclick="goShop('chain');return false;">Rose Gold</a>
+      </div>
+    </li>
     <li><a class="nav-link" data-view="about" onclick="showView('about');return false;">About Us</a></li>
     <li><a class="nav-link" data-view="review" onclick="showView('review');return false;">Review</a></li>
     <li><a class="nav-link nav-cta" data-view="custom" onclick="showView('custom');return false;">Custom Order</a></li>
   </ul>
   <div class="nav-right">
-    <button class="cart-btn" onclick="viewCart()">
-      <span>🛒 Cart</span>
-      <span class="cart-count" id="cart-count">0</span>
+    <button class="nav-icon-btn" onclick="viewCart()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6"><circle cx="9" cy="20" r="1.4" fill="var(--gold)" stroke="none"/><circle cx="18" cy="20" r="1.4" fill="var(--gold)" stroke="none"/><path d="M2 3h2l2.6 12.6a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L21 7H6"/></svg>
+      <span class="nav-icon-count" id="cart-count">0</span>
+      <span class="nav-icon-label">Checkout</span>
+    </button>
+    <button class="nav-icon-btn" onclick="openAccountModal()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.4-4 4.2-6 7.5-6s6.1 2 7.5 6"/></svg>
+      <span class="nav-icon-label" id="account-label">Sign Up / Login</span>
     </button>
     <button class="nav-burger" onclick="toggleMobileMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1764,7 +1907,14 @@
     </div>
 
     <svg class="city-silhouette" viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <g fill="rgba(180,130,0,0.12)" stroke="none">
+      <defs>
+        <linearGradient id="skylineGoldGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#E8A838" stop-opacity="0.22"/>
+          <stop offset="55%" stop-color="#D98F26" stop-opacity="0.16"/>
+          <stop offset="100%" stop-color="#7A4310" stop-opacity="0.24"/>
+        </linearGradient>
+      </defs>
+      <g fill="url(#skylineGoldGrad)" stroke="none">
         <rect x="0" y="200" width="80" height="100"/>
         <rect x="20" y="160" width="40" height="40"/>
         <rect x="30" y="140" width="20" height="20"/>
@@ -1846,12 +1996,12 @@
         <rect x="1350" y="195" width="90" height="105"/>
         <rect x="1355" y="165" width="80" height="30"/>
       </g>
-      <g fill="none" stroke="rgba(255,215,0,0.08)" stroke-width="1">
+      <g fill="none" stroke="rgba(232,168,56,0.08)" stroke-width="1">
         <rect x="480" y="140" width="120" height="160"/>
         <rect x="220" y="140" width="70" height="30"/>
         <rect x="850" y="130" width="75" height="30"/>
       </g>
-      <line x1="0" y1="299" x2="1440" y2="299" stroke="rgba(255,215,0,0.15)" stroke-width="1"/>
+      <line x1="0" y1="299" x2="1440" y2="299" stroke="rgba(232,168,56,0.15)" stroke-width="1"/>
     </svg>
 
     <button class="hero-scroll" onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">
@@ -1861,21 +2011,22 @@
   </section>
 
   <!-- TRUST STRIP -->
-  <div class="trust-strip reveal" style="padding-top:70px;">
+  <p class="trust-lead reveal">Sosa Linkz has thousands of happy customers — will you be one of them?</p>
+  <div class="trust-strip reveal">
     <div class="trust-item">
-      <span class="trust-icon">⭐</span>
+      <svg class="trust-icon-svg" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7.1L12 17.3 5.7 21.3l1.7-7.1L2 9.5l7.1-.6L12 2z"/></svg>
       <div class="trust-label">Thousands of Happy Customers</div>
     </div>
     <div class="trust-item">
-      <span class="trust-icon">💧</span>
+      <svg class="trust-icon-svg" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2c4.2 5.2 7 9 7 12.8A7 7 0 1 1 5 14.8C5 11 7.8 7.2 12 2z"/></svg>
       <div class="trust-label">Sweat Resistant Plating</div>
     </div>
     <div class="trust-item">
-      <span class="trust-icon">🔒</span>
+      <svg class="trust-icon-svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/></svg>
       <div class="trust-label">Secure Checkout</div>
     </div>
     <div class="trust-item">
-      <span class="trust-icon">🚚</span>
+      <svg class="trust-icon-svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6"><line x1="1" y1="9" x2="3.5" y2="9" stroke-dasharray="2 2"/><line x1="1" y1="13.5" x2="3" y2="13.5" stroke-dasharray="2 2"/><rect x="7" y="6" width="14" height="13" rx="1"/><path d="M7 11.5h14M12.5 6v13"/></svg>
       <div class="trust-label">Fast Shipping</div>
     </div>
   </div>
@@ -1886,15 +2037,16 @@
     <h2 class="section-title reveal">Best Sellers</h2>
     <p class="section-subtitle reveal">The sets our customers keep coming back for</p>
     <div class="products-grid">
-      <div class="product-card reveal reveal-delay-1" onclick="openModal('16MM Gold Miami Cuban Link', '16MM · 22 Inch · Standard', '$275', '$295')">
+      <div class="product-card reveal reveal-delay-1" onclick="openModal('16MM Gold', '16MM · 22 Inch · Standard', '$275', '$295')">
         <div class="card-ribbon">Best Seller</div>
         <div class="shimmer"></div>
         <div class="card-corner"></div><div class="card-corner-bl"></div>
         <div class="card-chain-visual"></div>
-        <div class="card-size-tag">16MM / 22IN<span>Miami Cuban Link</span></div>
+        <div class="card-size-tag">16MM / 22IN<span>Gold</span></div>
         <div class="card-badge-row">
           <span class="card-badge badge-gold">Standard</span>
           <span class="card-badge badge-gold">Cuban Link</span>
+          <span class="card-badge badge-limited">Limited Stock</span>
         </div>
         <div class="card-includes">Includes matching MM bracelet</div>
         <div class="card-price">
@@ -1905,11 +2057,11 @@
         <div class="card-cta">Order Now</div>
       </div>
 
-      <div class="product-card card-exclusive reveal reveal-delay-2" onclick="openModal('22MM Gold Miami Cuban Link — The Heavy Set 🪨', '22MM · 24 Inch · The Heaviest Drop', '$320', '$350')">
+      <div class="product-card card-exclusive reveal reveal-delay-2" onclick="openModal('22MM Gold — The Heavy Set 🪨', '22MM · 24 Inch · The Heaviest Drop', '$320', '$350')">
         <div class="card-ribbon">Best Seller</div>
         <div class="shimmer"></div>
         <div class="card-corner"></div><div class="card-corner-bl"></div>
-        <div class="card-chain-visual" style="height:9px; box-shadow: 0 0 20px rgba(255,215,0,0.7), 0 3px 8px rgba(0,0,0,0.8);"></div>
+        <div class="card-chain-visual" style="height:18px; box-shadow: 0 3px 10px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.35);"></div>
         <div class="card-size-tag">22MM / 24IN<span>The Heavy Set</span></div>
         <div class="card-badge-row">
           <span class="card-badge badge-exclusive">Exclusive</span>
@@ -1929,7 +2081,7 @@
         <div class="card-ribbon">Best Seller</div>
         <div class="shimmer"></div>
         <div class="card-corner"></div><div class="card-corner-bl"></div>
-        <div class="card-chain-visual" style="background: repeating-linear-gradient(90deg, #8B3A3A 0px, #C06060 4px, #FFB3B3 6px, #C06060 8px, #8B3A3A 12px); box-shadow: 0 0 12px rgba(255,150,150,0.5), 0 2px 4px rgba(0,0,0,0.5);"></div>
+        <div class="card-chain-visual" style="background-image: radial-gradient(ellipse 6px 6px at 8px 8px, #FFEDE7 0%, #FFC2B8 20%, #E8897A 45%, #C06060 65%, #8B3A3A 85%, #6B2A2A 100%); background-size:16px 16px; background-repeat:repeat-x; background-position:center; box-shadow: 0 2px 6px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.3);"></div>
         <div class="card-size-tag">16MM / 22IN<span>Iced Rose Gold</span></div>
         <div class="card-badge-row">
           <span class="card-badge badge-rose">Rose Gold</span>
@@ -2008,14 +2160,15 @@
   </div>
 
   <div class="products-grid" data-tier-group="chain set">
-    <div class="product-card" data-category="chain set" onclick="openModal('10MM Gold Miami Cuban Link', '10MM · 24 Inch · Standard', '$275', '$295')">
+    <div class="product-card" data-category="chain set" onclick="openModal('10MM Gold', '10MM · 24 Inch · Standard', '$275', '$295')">
       <div class="shimmer"></div>
       <div class="card-corner"></div><div class="card-corner-bl"></div>
       <div class="card-chain-visual"></div>
-      <div class="card-size-tag">10MM / 24IN<span>Miami Cuban Link</span></div>
+      <div class="card-size-tag">10MM / 24IN<span>Gold</span></div>
       <div class="card-badge-row">
         <span class="card-badge badge-gold">Standard</span>
         <span class="card-badge badge-gold">Cuban Link</span>
+        <span class="card-badge badge-limited">Limited Stock</span>
       </div>
       <div class="card-includes">Includes matching MM bracelet</div>
       <div class="card-price">
@@ -2026,14 +2179,15 @@
       <div class="card-cta">Order Now</div>
     </div>
 
-    <div class="product-card" data-category="chain set" onclick="openModal('14MM Gold Miami Cuban Link', '14MM · 24 Inch · Standard', '$275', '$295')">
+    <div class="product-card" data-category="chain set" onclick="openModal('14MM Gold', '14MM · 24 Inch · Standard', '$275', '$295')">
       <div class="shimmer"></div>
       <div class="card-corner"></div><div class="card-corner-bl"></div>
       <div class="card-chain-visual"></div>
-      <div class="card-size-tag">14MM / 24IN<span>Miami Cuban Link</span></div>
+      <div class="card-size-tag">14MM / 24IN<span>Gold</span></div>
       <div class="card-badge-row">
         <span class="card-badge badge-gold">Standard</span>
         <span class="card-badge badge-gold">Cuban Link</span>
+        <span class="card-badge badge-limited">Limited Stock</span>
       </div>
       <div class="card-includes">Includes matching MM bracelet</div>
       <div class="card-price">
@@ -2044,14 +2198,15 @@
       <div class="card-cta">Order Now</div>
     </div>
 
-    <div class="product-card" data-category="chain set" onclick="openModal('16MM Gold Miami Cuban Link', '16MM · 22 Inch · Standard', '$275', '$295')">
+    <div class="product-card" data-category="chain set" onclick="openModal('16MM Gold', '16MM · 22 Inch · Standard', '$275', '$295')">
       <div class="shimmer"></div>
       <div class="card-corner"></div><div class="card-corner-bl"></div>
       <div class="card-chain-visual"></div>
-      <div class="card-size-tag">16MM / 22IN<span>Miami Cuban Link</span></div>
+      <div class="card-size-tag">16MM / 22IN<span>Gold</span></div>
       <div class="card-badge-row">
         <span class="card-badge badge-gold">Standard</span>
         <span class="card-badge badge-gold">Cuban Link</span>
+        <span class="card-badge badge-limited">Limited Stock</span>
       </div>
       <div class="card-includes">Includes matching MM bracelet</div>
       <div class="card-price">
@@ -2082,14 +2237,15 @@
   </div>
 
   <div class="products-grid" data-tier-group="chain set">
-    <div class="product-card card-signature" data-category="chain set" onclick="openModal('20MM Gold Miami Cuban Link — Signature', '20MM · 24 Inch · Signature', '$299', '$315')">
+    <div class="product-card card-signature" data-category="chain set" onclick="openModal('20MM Gold — Signature', '20MM · 24 Inch · Signature', '$299', '$315')">
       <div class="shimmer"></div>
       <div class="card-corner"></div><div class="card-corner-bl"></div>
       <div class="card-chain-visual"></div>
-      <div class="card-size-tag">20MM / 24IN<span>Miami Cuban Link</span></div>
+      <div class="card-size-tag">20MM / 24IN<span>Gold</span></div>
       <div class="card-badge-row">
         <span class="card-badge badge-gold">Signature</span>
         <span class="card-badge badge-gold">Heavyweight</span>
+        <span class="card-badge badge-limited">Limited Stock</span>
       </div>
       <div class="card-includes">Includes matching MM bracelet</div>
       <div class="card-price">
@@ -2100,14 +2256,15 @@
       <div class="card-cta">Order Now</div>
     </div>
 
-    <div class="product-card card-signature" data-category="chain set" onclick="openModal('18MM Gold Miami Cuban Link — Signature', '18MM · 24 Inch · Signature', '$299', '$315')">
+    <div class="product-card card-signature" data-category="chain set" onclick="openModal('18MM Gold — Signature', '18MM · 24 Inch · Signature', '$299', '$315')">
       <div class="shimmer"></div>
       <div class="card-corner"></div><div class="card-corner-bl"></div>
       <div class="card-chain-visual"></div>
-      <div class="card-size-tag">18MM / 24IN<span>Miami Cuban Link</span></div>
+      <div class="card-size-tag">18MM / 24IN<span>Gold</span></div>
       <div class="card-badge-row">
         <span class="card-badge badge-gold">Signature</span>
         <span class="card-badge badge-gold">Heavyweight</span>
+        <span class="card-badge badge-limited">Limited Stock</span>
       </div>
       <div class="card-includes">Includes matching MM bracelet</div>
       <div class="card-price">
@@ -2121,7 +2278,7 @@
     <div class="product-card card-signature" data-category="chain set" onclick="openModal('16MM Iced Rose Gold — 3-Day Special', '16MM · 22 Inch · Iced Rose Gold · Limited Time', '$299', '$315')">
       <div class="shimmer"></div>
       <div class="card-corner"></div><div class="card-corner-bl"></div>
-      <div class="card-chain-visual" style="background: repeating-linear-gradient(90deg, #8B3A3A 0px, #C06060 4px, #FFB3B3 6px, #C06060 8px, #8B3A3A 12px); box-shadow: 0 0 12px rgba(255,150,150,0.5), 0 2px 4px rgba(0,0,0,0.5);"></div>
+      <div class="card-chain-visual" style="background-image: radial-gradient(ellipse 6px 6px at 8px 8px, #FFEDE7 0%, #FFC2B8 20%, #E8897A 45%, #C06060 65%, #8B3A3A 85%, #6B2A2A 100%); background-size:16px 16px; background-repeat:repeat-x; background-position:center; box-shadow: 0 2px 6px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.3);"></div>
       <div class="card-size-tag">16MM / 22IN<span>Iced Rose Gold</span></div>
       <div class="card-badge-row">
         <span class="card-badge badge-rose">Rose Gold</span>
@@ -2157,11 +2314,11 @@
   </div>
 
   <div class="products-grid" data-tier-group="chain set">
-    <div class="product-card card-exclusive" data-category="chain set" onclick="openModal('22MM Gold Miami Cuban Link — The Heavy Set 🪨', '22MM · 24 Inch · The Heaviest Drop', '$320', '$350')">
+    <div class="product-card card-exclusive" data-category="chain set" onclick="openModal('22MM Gold — The Heavy Set 🪨', '22MM · 24 Inch · The Heaviest Drop', '$320', '$350')">
       <div class="card-ribbon">Best Seller</div>
       <div class="shimmer"></div>
       <div class="card-corner"></div><div class="card-corner-bl"></div>
-      <div class="card-chain-visual" style="height:9px; box-shadow: 0 0 20px rgba(255,215,0,0.7), 0 3px 8px rgba(0,0,0,0.8);"></div>
+      <div class="card-chain-visual" style="height:18px; box-shadow: 0 3px 10px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.35);"></div>
       <div class="card-size-tag">22MM / 24IN<span>The Heavy Set</span></div>
       <div class="card-badge-row">
         <span class="card-badge badge-exclusive">Exclusive</span>
@@ -2180,7 +2337,7 @@
     <div class="product-card card-exclusive" data-category="chain set" onclick="openModal('20MM Rose Gold Exclusive', '20MM · 24 Inch · Rose Gold · Exclusive', '$320', '$350')">
       <div class="shimmer"></div>
       <div class="card-corner"></div><div class="card-corner-bl"></div>
-      <div class="card-chain-visual" style="height:8px; background: repeating-linear-gradient(90deg, #8B3A3A 0px, #C06060 4px, #FFB3B3 6px, #C06060 8px, #8B3A3A 12px); box-shadow: 0 0 20px rgba(255,150,150,0.6), 0 3px 8px rgba(0,0,0,0.8);"></div>
+      <div class="card-chain-visual" style="height:18px; background-image: radial-gradient(ellipse 7px 7px at 9px 9px, #FFEDE7 0%, #FFC2B8 20%, #E8897A 45%, #C06060 65%, #8B3A3A 85%, #6B2A2A 100%); background-size:18px 18px; background-repeat:repeat-x; background-position:center; box-shadow: 0 3px 10px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.35);"></div>
       <div class="card-size-tag">20MM / 24IN<span>Rose Gold</span></div>
       <div class="card-badge-row">
         <span class="card-badge badge-exclusive">Exclusive</span>
@@ -2223,7 +2380,7 @@
       </div>
     </div>
     <div style="text-align:center; margin-top:32px;">
-      <a href="#contact" style="display:inline-block; padding:14px 40px; border:1px solid rgba(255,215,0,0.3); color:var(--gold); font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,215,0,0.1)'" onmouseout="this.style.background='transparent'">Notify Me When Ready</a>
+      <a href="#contact" style="display:inline-block; padding:14px 40px; border:1px solid rgba(232,168,56,0.3); color:var(--gold); font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.background='rgba(232,168,56,0.1)'" onmouseout="this.style.background='transparent'">Notify Me When Ready</a>
     </div>
   </div>
 
@@ -2308,27 +2465,39 @@
     <p class="section-subtitle">Placeholder reviews below — swap in your real ones anytime</p>
   </div>
 
-  <div class="reviews-grid reveal">
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Chain came exactly like the pictures, bracelet matches perfect. Fast shipping too."</p>
-      <div class="review-author">Marcus — Kissimmee, FL</div>
+  <div class="carousel-wrap reveal">
+    <button class="carousel-arrow carousel-arrow-left" onclick="scrollCarousel(-1)" aria-label="Scroll left">‹</button>
+    <div class="carousel-track" id="reviewCarousel">
+      <div class="carousel-card">
+        <div class="carousel-frame">
+          <div class="carousel-media-placeholder"><span>▶</span><p>Video coming soon</p></div>
+          <div class="carousel-stars">★★★★★</div>
+        </div>
+        <div class="carousel-caption">Marcus — Kissimmee, FL</div>
+      </div>
+      <div class="carousel-card">
+        <div class="carousel-frame">
+          <div class="carousel-media-placeholder"><span>▶</span><p>Video coming soon</p></div>
+          <div class="carousel-stars">★★★★★</div>
+        </div>
+        <div class="carousel-caption">Dee — Central Florida</div>
+      </div>
+      <div class="carousel-card">
+        <div class="carousel-frame">
+          <div class="carousel-media-placeholder"><span>▶</span><p>Video coming soon</p></div>
+          <div class="carousel-stars">★★★★☆</div>
+        </div>
+        <div class="carousel-caption">Angel — Kissimmee, FL</div>
+      </div>
+      <div class="carousel-card">
+        <div class="carousel-frame">
+          <div class="carousel-media-placeholder"><span>▶</span><p>Video coming soon</p></div>
+          <div class="carousel-stars">★★★★★</div>
+        </div>
+        <div class="carousel-caption">T. Rodriguez — Winter Garden, FL</div>
+      </div>
     </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Heavy, looks real, no complaints. Been asking everyone where I got it."</p>
-      <div class="review-author">Dee — Orlando, FL</div>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★☆</div>
-      <p class="review-text">"Good quality for the price, the comment box option was clutch for sizing."</p>
-      <div class="review-author">Angel — Kissimmee, FL</div>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"DM'd for a custom order, easiest process ever. Will be back for the 22mm."</p>
-      <div class="review-author">T. Rodriguez — Winter Garden, FL</div>
-    </div>
+    <button class="carousel-arrow carousel-arrow-right" onclick="scrollCarousel(1)" aria-label="Scroll right">›</button>
   </div>
 
   <div class="form-panel reveal">
@@ -2447,7 +2616,7 @@
 <!-- FOOTER (persistent) -->
 <footer>
   <svg class="footer-deco" viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <g fill="rgba(255,215,0,0.5)" stroke="none">
+    <g fill="rgba(232,168,56,0.5)" stroke="none">
       <rect x="0" y="120" width="50" height="80"/>
       <rect x="10" y="100" width="30" height="20"/>
       <rect x="60" y="130" width="40" height="70"/>
@@ -2637,6 +2806,40 @@
   document.getElementById('modal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
+
+  // ─── ACCOUNT (waitlist capture — no backend yet, so this is real signup capture, not a fake login) ───
+  function openAccountModal() {
+    document.getElementById('accountModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAccountModal() {
+    document.getElementById('accountModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('accountModal').addEventListener('click', function(e) {
+    if (e.target === this) closeAccountModal();
+  });
+  function submitAccountWaitlist(e) {
+    e.preventDefault();
+    const email = e.target.email.value;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Early Access Signup')}&body=${encodeURIComponent('Add this email to the early access list: ' + email)}`;
+    closeAccountModal();
+  }
+
+  // ─── SHOP DROPDOWN NAV ───
+  function goShop(filter) {
+    showView('shop');
+    requestAnimationFrame(() => {
+      const btn = document.querySelector('.filter-tab[data-filter="' + filter + '"]');
+      if (btn) filterShop(filter, btn);
+    });
+  }
+
+  // ─── REVIEW CAROUSEL ───
+  function scrollCarousel(dir) {
+    const track = document.getElementById('reviewCarousel');
+    if (track) track.scrollBy({ left: dir * 250, behavior: 'smooth' });
+  }
 
   function orderNow() {
     const bracelet = document.getElementById('modal-bracelet').value;
