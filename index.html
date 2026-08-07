@@ -605,6 +605,23 @@
     font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
   }
   .hero-video-placeholder span { font-size: 2.4rem; color: rgba(232,168,56,0.5); }
+  .hero-video-sound {
+    position: absolute; bottom: 16px; right: 16px; z-index: 3;
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(8,8,8,0.7);
+    border: 1px solid rgba(232,168,56,0.4);
+    border-radius: 20px;
+    padding: 8px 14px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s;
+  }
+  .hero-video-sound:hover { background: rgba(8,8,8,0.9); }
+  .hero-video-sound svg { width: 18px; height: 18px; }
+  .hero-video-sound-label {
+    font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold);
+  }
   @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; padding: 130px 24px 60px; min-height: auto; }
     .hero-copy, .hero-copy .hero-eyebrow { text-align: center; }
@@ -2037,6 +2054,20 @@
           <video class="hero-video" autoplay muted loop playsinline>
             <source src="media/hero-video.mp4" type="video/mp4">
           </video>
+          <button class="hero-video-sound" id="heroSoundBtn" onclick="toggleHeroSound()" aria-label="Turn sound on">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 9v6h4l5 5V4L8 9H4z" fill="var(--gold)"/>
+              <g id="soundOffLines" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round">
+                <line x1="16" y1="9" x2="21" y2="14"/>
+                <line x1="21" y1="9" x2="16" y2="14"/>
+              </g>
+              <g id="soundOnArcs" stroke="var(--gold)" stroke-width="1.8" fill="none" stroke-linecap="round" style="display:none;">
+                <path d="M16 9c1.5 1.2 1.5 4.8 0 6"/>
+                <path d="M18.5 7c2.5 2 2.5 8 0 10"/>
+              </g>
+            </svg>
+            <span class="hero-video-sound-label" id="heroSoundLabel">Tap for Sound</span>
+          </button>
         </div>
       </div>
     </div>
@@ -2870,6 +2901,17 @@
   function scrollCarousel(dir) {
     const track = document.getElementById('reviewCarousel');
     if (track) track.scrollBy({ left: dir * 250, behavior: 'smooth' });
+  }
+
+  // ─── HERO VIDEO SOUND TOGGLE (starts muted so autoplay works, tap to unmute) ───
+  function toggleHeroSound() {
+    const video = document.querySelector('.hero-video');
+    if (!video) return;
+    video.muted = !video.muted;
+    if (!video.muted) { video.play().catch(() => {}); }
+    document.getElementById('soundOffLines').style.display = video.muted ? '' : 'none';
+    document.getElementById('soundOnArcs').style.display = video.muted ? 'none' : '';
+    document.getElementById('heroSoundLabel').textContent = video.muted ? 'Tap for Sound' : 'Sound On';
   }
 
   function orderNow() {
