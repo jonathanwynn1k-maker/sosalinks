@@ -2064,7 +2064,7 @@
       </div>
       <div class="hero-visual">
         <div class="hero-video-frame">
-          <video class="hero-video" autoplay muted loop playsinline>
+          <video class="hero-video" autoplay muted playsinline>
             <source src="media/hero-video.mp4" type="video/mp4">
           </video>
           <button class="hero-video-playpause" id="heroPlayBtn" onclick="toggleHeroPlay()" aria-label="Pause video">
@@ -2929,12 +2929,27 @@
   function toggleHeroPlay() {
     const video = document.querySelector('.hero-video');
     if (!video) return;
-    if (video.paused) { video.play().catch(() => {}); } else { video.pause(); }
-    const playing = !video.paused;
+    if (video.paused || video.ended) {
+      if (video.ended) { video.currentTime = 0; }
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+    const playing = !video.paused && !video.ended;
     document.getElementById('playIcon').style.display = playing ? 'none' : '';
     document.getElementById('pauseIcon').style.display = playing ? '' : 'none';
     document.getElementById('heroPlayBtn').setAttribute('aria-label', playing ? 'Pause video' : 'Play video');
   }
+  (function() {
+    const heroVideoEl = document.querySelector('.hero-video');
+    if (heroVideoEl) {
+      heroVideoEl.addEventListener('ended', function() {
+        document.getElementById('playIcon').style.display = '';
+        document.getElementById('pauseIcon').style.display = 'none';
+        document.getElementById('heroPlayBtn').setAttribute('aria-label', 'Play video');
+      });
+    }
+  })();
 
   // ─── HERO VIDEO SOUND TOGGLE (starts muted so autoplay works, tap to unmute) ───
   function toggleHeroSound() {
