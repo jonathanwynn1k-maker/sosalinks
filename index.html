@@ -622,6 +622,19 @@
     font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 700;
     letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold);
   }
+  .hero-video-playpause {
+    position: absolute; bottom: 16px; left: 16px; z-index: 3;
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px;
+    background: rgba(8,8,8,0.7);
+    border: 1px solid rgba(232,168,56,0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s;
+  }
+  .hero-video-playpause:hover { background: rgba(8,8,8,0.9); }
+  .hero-video-playpause svg { width: 16px; height: 16px; }
   @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; padding: 130px 24px 60px; min-height: auto; }
     .hero-copy, .hero-copy .hero-eyebrow { text-align: center; }
@@ -2054,6 +2067,15 @@
           <video class="hero-video" autoplay muted loop playsinline>
             <source src="media/hero-video.mp4" type="video/mp4">
           </video>
+          <button class="hero-video-playpause" id="heroPlayBtn" onclick="toggleHeroPlay()" aria-label="Pause video">
+            <svg viewBox="0 0 24 24">
+              <path id="playIcon" d="M8 5v14l12-7z" fill="var(--gold)" style="display:none;"/>
+              <g id="pauseIcon">
+                <rect x="7" y="5" width="4" height="14" fill="var(--gold)"/>
+                <rect x="14" y="5" width="4" height="14" fill="var(--gold)"/>
+              </g>
+            </svg>
+          </button>
           <button class="hero-video-sound" id="heroSoundBtn" onclick="toggleHeroSound()" aria-label="Turn sound on">
             <svg viewBox="0 0 24 24">
               <path d="M4 9v6h4l5 5V4L8 9H4z" fill="var(--gold)"/>
@@ -2901,6 +2923,17 @@
   function scrollCarousel(dir) {
     const track = document.getElementById('reviewCarousel');
     if (track) track.scrollBy({ left: dir * 250, behavior: 'smooth' });
+  }
+
+  // ─── HERO VIDEO PLAY/PAUSE ───
+  function toggleHeroPlay() {
+    const video = document.querySelector('.hero-video');
+    if (!video) return;
+    if (video.paused) { video.play().catch(() => {}); } else { video.pause(); }
+    const playing = !video.paused;
+    document.getElementById('playIcon').style.display = playing ? 'none' : '';
+    document.getElementById('pauseIcon').style.display = playing ? '' : 'none';
+    document.getElementById('heroPlayBtn').setAttribute('aria-label', playing ? 'Pause video' : 'Play video');
   }
 
   // ─── HERO VIDEO SOUND TOGGLE (starts muted so autoplay works, tap to unmute) ───
